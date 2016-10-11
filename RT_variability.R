@@ -128,8 +128,8 @@ word_hits_rt <- d_rt %>%
   filter(mem_bin == 2 || mem_bin == 3)
 
 mem_words <- d_rt %>%
-  # filter(filter by words in word_hits_rt) %>%
-  select(controlledRT.zone, word)
+  filter(word %in% word_hits_rt$word) %>%
+  select(subjNum, word, controlledRT.zone)
 
 #based on word in IQR, calculate dprime for in the zone, and out of the zone words
 d_rt_test <- d_rt_test %>% 
